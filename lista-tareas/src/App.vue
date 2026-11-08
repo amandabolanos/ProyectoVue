@@ -6,15 +6,12 @@
   const tareas = ref([]) 
   let siguienteId = 1 
 
-  function agregarTarea() { 
-    if (nuevaTarea.value.trim() === '') return
-      tareas.value.push({
-        id: siguienteId++,
-        texto: nuevaTarea.value,
-        completa: false
-      })
-      nuevaTarea.value = ''
-  }
+function agregarTarea() {
+  const texto = nuevaTarea.value.trim()
+  if (texto === '') return
+  tareas.value.push({ id: siguienteId++, texto, completa: false })
+  nuevaTarea.value = ''
+}
 
   function cambiarEstado(id) { 
     const tarea = tareas.value.find(t => t.id === id)

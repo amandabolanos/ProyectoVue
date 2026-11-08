@@ -1,18 +1,18 @@
 <script setup>
-  defineProps({ tarea: Object }) 
-  defineEmits(['cambiar', 'eliminar'])
+defineProps({ tarea: { type: Object, required: true }})
+defineEmits(['cambiar', 'eliminar'])
 </script> 
 
 <template>
   <li>
-    <input type="checkbox" :checked="tarea.hecha" 
+    <input type="checkbox" :checked="tarea.completa" 
       @change="$emit('cambiar', tarea.id)" />
     <span :class="{ completa: tarea.completa }">{{ tarea.texto }}</span>
     <button @click="$emit('eliminar', tarea.id)">Eliminar</button>
   </li>
 </template>
 
-<style>
+<style scoped>
   .completa {
     text-decoration: line-through;
     color: gray; 
@@ -65,7 +65,7 @@
     span {
       font-size: 15px;
     }
-    .hecha {
+    .completa {
       text-decoration: line-through;
       color: #9ca0a4;
     }
